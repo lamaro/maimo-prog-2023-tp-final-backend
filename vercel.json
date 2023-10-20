@@ -42,6 +42,31 @@
         "src": "/products",
         "dest": "/app.js",
         "methods": ["POST"]
+      },
+      {
+        "src": "/orders/(?<id>[^/]+)",
+        "dest": "/app.js/?id=$id",
+        "methods": ["DELETE"]
+      },
+      {
+        "src": "/orders/(?<id>[^/]+)",
+        "dest": "/app.js/?id=$id",
+        "methods": ["PUT"]
+      },
+      {
+        "src": "/orders",
+        "dest": "/app.js",
+        "methods": ["GET"]
+      },
+      {
+        "src": "/orders/(?<id>[^/]+)",
+        "dest": "/app.js",
+        "methods": ["GET"]
+      },
+      {
+        "src": "/orders",
+        "dest": "/app.js",
+        "methods": ["POST"]
       }
     ]
   }
