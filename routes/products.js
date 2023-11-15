@@ -5,7 +5,7 @@ const router = express.Router();
 
 const findAllProducts = async (req, res) => {
   try {
-    const products = await Product.find().select("_id name");
+    const products = await Product.find().select("_id name options image description type");
     return res.status(200).send({ message: "All products", products });
   } catch (error) {
     return res.status(501).send({ message: "Error", error });
@@ -14,7 +14,7 @@ const findAllProducts = async (req, res) => {
 const findOneProduct = async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await Product.findOne({ _id: id }).select("_id name");
+    const product = await Product.findOne({ _id: id }).select("_id name options image description type");
     res.status(200).send({ message: "Product info", product });
   } catch (error) {
     return res.status(501).send({ message: "Error", error });
@@ -22,8 +22,8 @@ const findOneProduct = async (req, res) => {
 };
 const addProduct = async (req, res) => {
   try {
-    const { name } = req.body;
-    const product = new Product({ name });
+    const { name, options, image, description, type } = req.body;
+    const product = new Product({name, options, image, description, type});
     await product.save();
     return res
       .status(200)
@@ -36,7 +36,7 @@ const addProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   try {
     const {id} = req.params;
-    const {name} = req.body;
+    const {name, options, image, description, type} = req.body;
     
     const productToUpdate = await Product.findOne({_id: id})
 
@@ -45,6 +45,10 @@ const updateProduct = async (req, res) => {
     }
 
     productToUpdate.name = name;
+    productToUpdate.options = options;
+    productToUpdate.image = image;
+    productToUpdate.description = description;
+    productToUpdate.type = type;
     await productToUpdate.save();
 
     res.status(200).send({ message: "Product Updated", product: productToUpdate });
