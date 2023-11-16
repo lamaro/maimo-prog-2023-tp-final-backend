@@ -22,8 +22,8 @@ const findOneFlavor = async (req, res) => {
 };
 const addFlavor = async (req, res) => {
     try {
-        const { name, image, description, apto } = req.body;
-        const flavor = new Flavor({ name, image, description, apto });
+        const { name, image, description, apto, tipo } = req.body;
+        const flavor = new Flavor({ name, image, description, apto, tipo });
         await flavor.save();
         return res
             .status(200)
@@ -36,7 +36,7 @@ const addFlavor = async (req, res) => {
 const updateFlavor = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, image, description, apto } = req.body;
+        const { name, image, description, apto, tipo } = req.body;
 
         const flavorToUpdate = await Flavor.findOne({ _id: id })
 
@@ -48,6 +48,7 @@ const updateFlavor = async (req, res) => {
         flavorToUpdate.image = image;
         flavorToUpdate.description = description;
         flavorToUpdate.apto = apto;
+        flavorToUpdate.tipo = tipo;
         await flavorToUpdate.save();
 
         res.status(200).send({ message: "Flavor Updated", flavor: flavorToUpdate });
