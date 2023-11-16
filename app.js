@@ -5,6 +5,7 @@ import createError from "http-errors";
 import indexRoutes from "./routes/index.js";
 import productsRoutes from "./routes/products.js";
 import orderRoutes from "./routes/orders.js";
+import flavorRoutes from "./routes/flavors.js";
 import { connectDb } from "./db.js";
 
 const app = express();
@@ -39,6 +40,7 @@ app.use(
 app.use('/', indexRoutes);
 app.use('/products', productsRoutes);
 app.use('/orders', orderRoutes);
+app.use('/flavors', flavorRoutes);
 /* Routes */
 
 /* Error handler  */

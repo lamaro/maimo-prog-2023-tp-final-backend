@@ -23,7 +23,7 @@ const findOneFlavor = async (req, res) => {
 const addFlavor = async (req, res) => {
     try {
         const { name, image, description, apto } = req.body;
-        const flavor = new Flavor({ name, options, image, description, apto });
+        const flavor = new Flavor({ name, image, description, apto });
         await flavor.save();
         return res
             .status(200)
