@@ -7,10 +7,10 @@ const flavorSchema = new Schema ({
   name: { type: String },
   image: { type: String },
   description: { type: String },
-  apto: [{
+  apto: {
     vegano: {type: Boolean},
     celiaco: {type: Boolean}
-  }]
+  }
 });
 
 export default mongoose.model("Flavor", flavorSchema, "Flavors");
