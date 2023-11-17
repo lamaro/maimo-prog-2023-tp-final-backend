@@ -67,6 +67,31 @@
         "src": "/orders",
         "dest": "/app.js",
         "methods": ["POST"]
+      },
+      {
+        "src": "/flavors/(?<id>[^/]+)",
+        "dest": "/app.js/?id=$id",
+        "methods": ["DELETE"]
+      },
+      {
+        "src": "/flavors/(?<id>[^/]+)",
+        "dest": "/app.js/?id=$id",
+        "methods": ["PUT"]
+      },
+      {
+        "src": "/flavors",
+        "dest": "/app.js",
+        "methods": ["GET"]
+      },
+      {
+        "src": "/flavors/(?<id>[^/]+)",
+        "dest": "/app.js",
+        "methods": ["GET"]
+      },
+      {
+        "src": "/flavors",
+        "dest": "/app.js",
+        "methods": ["POST"]
       }
     ]
   }
