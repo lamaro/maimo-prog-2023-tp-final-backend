@@ -5,7 +5,7 @@ const router = express.Router();
 
 const findAllFlavors = async (req, res) => {
     try {
-        const flavors = await Flavor.find().select("_id name image description apto");
+        const flavors = await Flavor.find().select("_id name image description apto tipo");
         return res.status(200).send({ message: "All flavors", flavors });
     } catch (error) {
         return res.status(501).send({ message: "Error", error });
@@ -14,7 +14,7 @@ const findAllFlavors = async (req, res) => {
 const findOneFlavor = async (req, res) => {
     const { id } = req.params;
     try {
-        const flavor = await Flavor.findOne({ _id: id }).select("_id name image description apto");
+        const flavor = await Flavor.findOne({ _id: id }).select("_id name image description apto tipo");
         res.status(200).send({ message: "Flavor info", flavor });
     } catch (error) {
         return res.status(501).send({ message: "Error", error });
