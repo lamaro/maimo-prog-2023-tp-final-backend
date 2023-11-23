@@ -16,6 +16,7 @@ const productSchema = new Schema({
   image: { type: String },
   description: { type: String },
   type: { type: String },
+  slug: { type: String }
 });
 
 export default mongoose.model("Product", productSchema, "Products");
